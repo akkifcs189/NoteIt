@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import MainScreen from "../../components/MainScreen";
 import { Link, useHistory } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteNoteAction, listNotes } from "../../actions/notesActions";
@@ -112,7 +113,7 @@ const MyNotes = ({ search }) => {
                       </Badge>
                     </h4>
                     <blockquote className="blockquote mb-0">
-                      <p>{note.content}</p>
+                      <ReactMarkdown>{note.content}</ReactMarkdown>
                       <footer className="blockquote-footer">
                         Created On{" "}
                         <cite title="Source Title">
