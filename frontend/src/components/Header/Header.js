@@ -11,7 +11,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/userActions";
 
-const Header = () => {
+const Header = ({ setSearch }) => {
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -38,25 +38,34 @@ const Header = () => {
                 placeholder="Search"
                 className="mr-2"
                 aria-label="Search"
+                onChange={(e) => setSearch(e.target.value)}
               />
             </Form>
           </Nav>
-          <Nav
-            className="my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          >
-            <Nav.Link>
-              <Link to="/mynotes">My Notes</Link>
-            </Nav.Link>
-            <NavDropdown title="Akshay Raut" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action4">My Profile</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={logoutHandler}>
-                LogOut
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+          {userInfo ? (
+            <Nav
+              className="my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              <Nav.Link>
+                <Link to="/mynotes">My Notes</Link>
+              </Nav.Link>
+              <NavDropdown title={userInfo?.name} id="navbarScrollingDropdown">
+                <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={logoutHandler}>
+                  LogOut
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+            <Nav>
+              <Nav.Link>
+                <Link to="/login">Login</Link>
+              </Nav.Link>
+            </Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
