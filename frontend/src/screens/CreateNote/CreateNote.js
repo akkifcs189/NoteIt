@@ -6,7 +6,6 @@ import { createNoteAction } from "../../actions/notesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import ReactMarkdown from "react-markdown";
-import "./CreateNote.css";
 
 function CreateNote({ history }) {
   const [title, setTitle] = useState("");
@@ -58,6 +57,7 @@ function CreateNote({ history }) {
               <Form.Label>
                 Content
                 <a
+                  style={{ color: "blue" }}
                   href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
                   target="_blank"
                   rel="noreferrer"
