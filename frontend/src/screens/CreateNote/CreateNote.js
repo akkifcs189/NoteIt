@@ -6,6 +6,7 @@ import { createNoteAction } from "../../actions/notesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import ReactMarkdown from "react-markdown";
+import "./CreateNote.css";
 
 function CreateNote({ history }) {
   const [title, setTitle] = useState("");
@@ -54,7 +55,16 @@ function CreateNote({ history }) {
             </Form.Group>
 
             <Form.Group controlId="content">
-              <Form.Label>Content</Form.Label>
+              <Form.Label>
+                Content
+                <a
+                  href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  (Guide)
+                </a>
+              </Form.Label>
               <Form.Control
                 as="textarea"
                 value={content}
